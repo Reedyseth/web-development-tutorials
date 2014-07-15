@@ -76,7 +76,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="id">Id</label>
                         <div class="input-group col-sm-9">
-                            <input id="id" name="id" type="text" class="form-control" placeholder="Type the id" />
+                            <input id="id" name="id" type="text" disabled class="form-control" placeholder="Type the id" />
                             <span class="input-group-btn">
                                     <button type="button" class="btn btn-default btnSearchById">
                                         <span class="glyphicon glyphicon-search"> Search</span>
@@ -160,11 +160,26 @@
 
             function makeAjaxRequest(type) {
                 if (type == "name") {
-                    $.ajax({url: 'php/search.php',
+                    $.ajax({url: 'php/searchReturnJson.php',
                         type: 'get',
                         data: {name: $('input#name').val()},
+                        dataType: 'json',
                         success: function(response) {
-                            $('table#resultTable tbody').html(response);
+                            var dataSize = response.length;
+                            var tableBody = "";
+                            if (response.error != "" && response.error !== undefined) {
+                                tableBody = "<tr><td colspan='4'>"+response.error+"</td></tr>";
+                            } else {
+                                for (var i = 0; i < dataSize; i++) {
+                                    tableBody +="<tr>"
+                                        +"<td>"+response[i].employee_id+"</td>"
+                                        +"<td>"+response[i].name+"</td>"
+                                        +"<td>"+response[i].email+"</td>"
+                                        +"<td>"+response[i].telephone+"</td>"
+                                    +"</tr>";
+                                }
+                            }
+                            $('table#resultTable tbody').html(tableBody);
                         }
                     });
                 } else if (type == "id") {
