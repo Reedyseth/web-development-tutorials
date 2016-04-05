@@ -49,13 +49,13 @@ var
 	core_version = "1.10.2",
 
 	// Save a reference to some core methods
-	core_concat = core_deletedIds.concat,
-	core_push = core_deletedIds.push,
-	core_slice = core_deletedIds.slice,
-	core_indexOf = core_deletedIds.indexOf,
+	core_concat   = core_deletedIds.concat,
+	core_push     = core_deletedIds.push,
+	core_slice    = core_deletedIds.slice,
+	core_indexOf  = core_deletedIds.indexOf,
 	core_toString = class2type.toString,
-	core_hasOwn = class2type.hasOwnProperty,
-	core_trim = core_version.trim,
+	core_hasOwn   = class2type.hasOwnProperty,
+	core_trim     = core_version.trim,
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {

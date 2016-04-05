@@ -1,0 +1,101 @@
+/**
+*	@author 	Ing. Israel Barragan C.  Email: ibarragan at behstant dot com
+*	@since 		07-Nov-2013
+*	@version 	160403
+*	##########################################################################################
+*	Comments:
+*	This file contains specific styles for the tutorials
+*	The records are shown in a HTML table.
+*
+*	Requires:
+*
+* 	LICENCE:
+*	You can use this code to any of your projects as long as you mention where you
+* 	downloaded it and the author which is me :) Happy Code.
+*
+* 	LICENCIA:
+*	Puedes usar este código para tus proyectos, pero siempre tomando en cuenta que
+* 	debes de poner de donde lo descargaste y el autor que soy yo :) Feliz Codificación.
+*	##########################################################################################
+*	@version
+*	##########################################################################################
+*	1.0	|	19-Jun-2013	|	Creation of new file to search a record.
+*	2.0	|	07-Nov-2013	|	Modified styles to make a smooth sync with Bootstrap.
+*	1407707	|	07-Jun-2014	|	Modified styles to stretch page to any loaded content.
+*	##########################################################################################
+*/
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #ABABAB !important;
+	/*margin: 0;
+	padding: 0;
+	background-repeat: no-repeat;
+	background-attachment: fixed;*/
+}
+
+table {
+	border: none;
+}
+
+table thead th {
+	background-color: #222222;
+	text-align: center;
+}
+
+table tbody td {
+	background-color: #EFEFEF;
+	color: #000000;
+	text-align: center;
+}
+
+th, td, tr {
+	padding: 8px;
+	color: white;
+}
+
+fieldset {
+	border: 1px solid #1F7EAD;
+}
+
+.noMargin {
+	margin: 0 !important;
+}
+
+.blueFont {
+	color: #4297BB;
+}
+
+.orangeFont {
+	color: #FF8000 !important;
+}
+
+.center {
+	display: block !important;
+	margin: 0 auto !important;
+}
+
+.notificationPanel {
+	display: none;
+}
+/*Black Panel*/
+.panel-primary-inverse {
+  border-color: #080808;
+}
+
+.panel-primary-inverse > .panel-heading {
+  color: #ffffff;
+  background-color: #222222;
+  border-color: #080808;
+}
+
+.panel-primary-inverse > .panel-heading + .panel-collapse .panel-body {
+  border-top-color: #080808;
+}
+
+.panel-primary-inverse > .panel-heading > .dropdown .caret {
+  border-color: #ffffff transparent;
+}
+
+.panel-primary-inverse > .panel-footer + .panel-collapse .panel-body {
+  border-bottom-color: #080808;
+}

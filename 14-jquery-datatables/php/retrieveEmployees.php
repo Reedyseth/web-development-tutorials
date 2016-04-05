@@ -1,7 +1,7 @@
 <?php
 /**
-*	@author 	Ing. Israel Barragan C.  Email: ibarragan at behstant dot com
-*	@since 		17-Jan-2013
+*	@author 	Ing. Israel Barragan C.  Email: reedyseth@gmail.com
+*	@since 		11-Nov-2015
 *	##########################################################################################
 *	Comments:
 *	This file is to show how to retrieve a record from a database with PDO
@@ -21,31 +21,23 @@
 *	##########################################################################################
 *	@version
 *	##########################################################################################
-*	V140117	|	17-Jan-2014	|	Initial file, search a record and creates a Json.
+*	V151111	|	11-Nov-2015	|	Initial file, get employees and create a Json.
 *	##########################################################################################
 */
+	header('Content-Type: application/json');
 	require_once 'Connection.simple.php';
 	$conn = dbConnect();
 	$OK = true; // We use this to verify the status of the update.
-	// If 'buscar' is in the array $_POST proceed to make the query.
-	if (isset($_GET['id'])) {
-		// Create the query
-		$data = trim($_GET['id']);
-		$sql = 'SELECT * FROM employee WHERE employee_id = ?';
-		// we have to tell the PDO that we are going to send values to the query
-		$stmt = $conn->prepare($sql);
-		// Now we execute the query passing an array toe execute();
-		$results = $stmt->execute(array($data));
-		// Extract the values from $result
-		$row = $stmt->fetch();
-		$error = $stmt->errorInfo();
-		//echo $error[2];
-	}
-	// If there are no records.
-	if(empty($row) && !isset($row)) {
-		echo '{"employee_id":"","0":"","name":"No record found","1":"","email":"","2":"","telephone":"","3":""}';
-	}
-	else {
-		echo json_encode($row);
-	}
+	// Create the query
+	$sql = 'SELECT * FROM employee';
+	// we have to tell the PDO that we are going to send values to the query
+	$stmt = $conn->prepare($sql);
+	// Now we execute the query passing an array toe execute();
+	$results = $stmt->execute();
+	// Extract the values from $result
+	$row = $stmt->fetchAll();
+	$error = $stmt->errorInfo();
+	//echo $error[2];
+	$response = json_encode( $row, JSON_UNESCAPED_UNICODE );
+	echo ! $response ? false : $response;
 ?>
