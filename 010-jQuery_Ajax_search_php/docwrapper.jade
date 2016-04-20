@@ -2,23 +2,23 @@
 html(lang="en")
 head
 	meta(charset="UTF-8")
-	title 
-			| This will be overriden
+	title
 		block title
+			| This will be overriden
 	meta(http-equiv="X-UA-Compatible" content="IE=9")
 	meta(name="copyright" content="Datasoft Engineering 2016")
 	meta(name="author" content="Reedyseth")
 	meta(name="email" content="reedyseth@gmail.com")
 	meta(name="description" content="Document" )
 	meta(name="viewport" content="width=device-width, initial-scale=1.0")
-	// Bootstrap 
+	// Bootstrap
 	link(href="css/bootstrap.min.css" rel="stylesheet")
 	link(rel="stylesheet" href="css/style.css")
 body
+	block inc-navbar
 
-	include navbar.jade
+	block inc-content
 
-	include content.jade
 	// jQuery (necessary for Bootstrap's JavaScript plugins)
 	script( src="js/jquery-1.10.2.js" )
 	// Include all compiled plugins (below), or include individual files as needed

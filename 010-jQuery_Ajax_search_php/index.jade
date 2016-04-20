@@ -1,8 +1,14 @@
 extends docwrapper.jade
 
 block title
-	|  Using Ajax to search a Record with PHP, MySQL and jQuery (Look and Feel by Bootstrap)
+	| Using Ajax to search a Record with PHP, MySQL and jQuery (Look and Feel by Bootstrap)
+
+block inc-navbar
+	include navbar.jade
+
+block inc-content
+	include content.jade
 
 block panel-title
-		span.glyphicon.glyphicon-th-list 
+		span.glyphicon.glyphicon-th-list
 		|  Employee Search
