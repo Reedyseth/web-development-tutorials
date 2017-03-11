@@ -22,22 +22,33 @@
 *	@version
 *	##########################################################################################
 *	V151111	|	11-Nov-2015	|	Initial file, get employees and create a Json.
+*	1.0.1	|	10-Mar-2017	|	Add additional comments to code.
 *	##########################################################################################
 */
-	header('Content-Type: application/json');
-	require_once 'Connection.simple.php';
-	$conn = dbConnect();
-	$OK = true; // We use this to verify the status of the update.
-	// Create the query
-	$sql = 'SELECT * FROM employee';
-	// we have to tell the PDO that we are going to send values to the query
-	$stmt = $conn->prepare($sql);
-	// Now we execute the query passing an array toe execute();
-	$results = $stmt->execute();
-	// Extract the values from $result
-	$row = $stmt->fetchAll();
-	$error = $stmt->errorInfo();
-	//echo $error[2];
-	$response = json_encode( $row, JSON_UNESCAPED_UNICODE );
-	echo ! $response ? false : $response;
+// Let us tell the server that we are delivering a JSON content
+header('Content-Type: application/json');
+require_once 'Connection.simple.php'; // This is where all the connection layer is store.
+$conn = dbConnect(); // Function located in our previous included file.
+$OK = true; // We use this to verify the status of the update.
+// Create the query
+$sql = 'SELECT * FROM employee';
+// we have to tell the PDO that we are going to send values to the query
+$stmt = $conn->prepare($sql);
+// Now we execute the query passing an array to execute(), only require is binding params
+$results = $stmt->execute();
+// Extract the values from $result
+$row   = $stmt->fetchAll(); // $row is an associative array with information, if found
+$error = $stmt->errorInfo(); // Since the statement contains information about our query, let us get any error info
+//echo $error[2]; // in case a error is found this array index will contain information.
+$response = json_encode( $row, JSON_UNESCAPED_UNICODE ); // second parameter to display unicode without scape chars.
+// last validation
+// if response is false the a falsy value is return, this value should be control by the server side.
+if( ! $response )
+{
+	echo "[{'ERROR': 'Error found while retrieving information.'}]";
+}
+else
+{
+	echo $response; // The JSON data.
+}
 ?>

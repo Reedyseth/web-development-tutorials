@@ -28,7 +28,7 @@
         </nav>
 
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-md-offset-2">
                 <div class="panel panel-primary">
                     <div class="panel-heading"><span class="glyphicon glyphicon-th-list"></span> Employee list</div>
 
