@@ -2,6 +2,7 @@
 	Script to handle the Datatables Plugin.
 	@author Reedyseth
 	@since 10-Nov-2015
+	@version 1.0.0
 */
 $(document).ready(function() { // We execute our code after the DOM is ready
 	// Perfoming an Ajax request to retrieve the records
@@ -22,7 +23,11 @@ $(document).ready(function() { // We execute our code after the DOM is ready
 			// After the tbody is created we add it to the table
 			$('#resultTable tbody').html( tbody );
 			// Initialize the jQuery DataTable plugin into the given selector.
-			$('#resultTable').DataTable();
+			$('#resultTable').DataTable({
+				sDom: '<"top"lf>rt<"bottom"i><"floatRight"p>',
+				responsive: true
+			});
+			// work around to have the length and filter at the same level
 		},
 		error: function(jqXHR){
 			// Just for debuggin purposes

@@ -5,3 +5,15 @@ body, head {
 table th, table td {
 	text-align: center;
 }
+
+.floatRight {
+	float: right;
+}
+
+.floatLeft {
+	float: left;
+}
+
+.resultTable {
+		width: 100% !important;
+}
