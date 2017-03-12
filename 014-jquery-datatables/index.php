@@ -10,7 +10,6 @@
         <link rel="author" href="Reedyseth">
     </head>
     <body>
-		<!-- Responsive Nav Bar only to desmotration purposes -->
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -27,7 +26,7 @@
         </nav>
 
         <div class="row">
-            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">
+            <div class="col-md-8 col-lg-8 col-md-offset-2">
                 <div class="panel panel-primary">
                     <div class="panel-heading"><span class="glyphicon glyphicon-th-list"></span> Employee list</div>
 

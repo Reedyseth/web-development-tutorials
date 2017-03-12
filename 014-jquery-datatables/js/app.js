@@ -4,14 +4,12 @@
 	@since 10-Nov-2015
 	@version 1.0.0
 */
-$(document).ready(function() { // We execute our code after the DOM is ready
-	// Perfoming an Ajax request to retrieve the records
+$(document).ready(function() {
 	$.ajax({
 		url: "php/retrieveEmployees.php",
-		dataType: "json", // I am specifying the response type.
-		success: function( response ){ // response is what the server return
+		dataType: "json",
+		success: function( response ){
 			var tbody = "";
-			// The records are return as a JSON so we iterate through the array and create the table row (tr)
 			for (var i = 0; i < response.length - 1; i++) {
 				tbody += "<tr>" +
 							"<td><a href='#'>"+ response[i].employee_id +"</a></td>"+
@@ -20,17 +18,12 @@ $(document).ready(function() { // We execute our code after the DOM is ready
 							"<td>"+ response[i].telephone +"</td>"+
 						 "</tr>";
 			};
-			// After the tbody is created we add it to the table
 			$('#resultTable tbody').html( tbody );
-			// Initialize the jQuery DataTable plugin into the given selector.
 			$('#resultTable').DataTable({
-				sDom: '<"top"lf>rt<"bottom"i><"floatRight"p>',
-				responsive: true
+				sDom: '<"top"lf>rt<"bottom"i><"floatRight"p>'
 			});
-			// work around to have the length and filter at the same level
 		},
 		error: function(jqXHR){
-			// Just for debuggin purposes
 			console.debug(jqXHR);
 		}
 	});
