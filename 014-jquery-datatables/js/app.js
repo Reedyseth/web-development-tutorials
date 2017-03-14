@@ -11,23 +11,31 @@ $(document).ready(function() { // We execute our code after the DOM is ready
 		dataType: "json", // I am specifying the response type.
 		success: function( response ){ // response is what the server return
 			var tbody = "";
-			// The records are return as a JSON so we iterate through the array and create the table row (tr)
-			for (var i = 0; i < response.length - 1; i++) {
-				tbody += "<tr>" +
-							"<td><a href='#'>"+ response[i].employee_id +"</a></td>"+
-							"<td>"+ response[i].name +"</td>"+
-							"<td>"+ response[i].email +"</td>"+
-							"<td>"+ response[i].telephone +"</td>"+
-						 "</tr>";
-			};
-			// After the tbody is created we add it to the table
-			$('#resultTable tbody').html( tbody );
-			// Initialize the jQuery DataTable plugin into the given selector.
-			$('#resultTable').DataTable({
-				sDom: '<"top"lf>rt<"bottom"i><"floatRight"p>',
-				responsive: true
-			});
-			// work around to have the length and filter at the same level
+			// Check that the response is an object and that it conatins an error message.
+			if (response[0].ERROR !== "" && response[0].ERROR !== undefined)
+			{
+                $('#resultTable tbody').html("<tr><td colspan='4'>" + response[0].MESSAGE + "</td></tr>");
+            }
+            else
+            {
+				// The records are return as a JSON so we iterate through the array and create the table row (tr)
+				for (var i = 0; i < response.length - 1; i++) {
+					tbody += "<tr>" +
+								"<td><a href='#'>"+ response[i].employee_id +"</a></td>"+
+								"<td>"+ response[i].name +"</td>"+
+								"<td>"+ response[i].email +"</td>"+
+								"<td>"+ response[i].telephone +"</td>"+
+							 "</tr>";
+				};
+				// After the tbody is created we add it to the table
+				$('#resultTable tbody').html( tbody );
+				// Initialize the jQuery DataTable plugin into the given selector.
+				$('#resultTable').DataTable({
+					sDom: '<"top"lf>rt<"bottom"i><"floatRight"p>',
+					responsive: true
+				});
+				// work around to have the length and filter at the same level
+            }
 		},
 		error: function(jqXHR){
 			// Just for debuggin purposes

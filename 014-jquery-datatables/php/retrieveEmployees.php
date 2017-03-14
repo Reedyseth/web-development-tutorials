@@ -39,16 +39,21 @@ $results = $stmt->execute();
 // Extract the values from $result
 $row   = $stmt->fetchAll(); // $row is an associative array with information, if found
 $error = $stmt->errorInfo(); // Since the statement contains information about our query, let us get any error info
-//echo $error[2]; // in case a error is found this array index will contain information.
-$response = json_encode( $row, JSON_UNESCAPED_UNICODE ); // second parameter to display unicode without scape chars.
+// echo $error[2]; // in case a error is found this array index will contain information.
 // last validation
-// if response is false the a falsy value is return, this value should be control by the server side.
-if( ! $response )
+// if error found let us create a nice error object.
+if( $error[2] !== null )
 {
-	echo "[{'ERROR': 'Error found while retrieving information.'}]";
+	$response = "[";
+		$response .= "{ ";
+			$response .= " \"ERROR\": \"Error found while retrieving information.\", ";
+			$response .= " \"MESSAGE\": \"". $error[2] ."\" ";
+		$response .= "}]";
 }
 else
 {
-	echo $response; // The JSON data.
+	$response = json_encode( $row, JSON_UNESCAPED_UNICODE ); // second parameter to display unicode without scape chars.
 }
+
+echo $response; // The JSON data.
 ?>
